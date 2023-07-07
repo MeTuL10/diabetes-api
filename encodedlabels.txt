@@ -1,0 +1,2 @@
+Female, Male, Other
+No Info, current, ever, former, never, not current
