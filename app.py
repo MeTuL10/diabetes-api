@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for, session
+from flask import Flask, render_template, session, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 from wtforms.validators import NumberRange
@@ -38,9 +38,9 @@ def return_prediction(model,user_input):
 
 app = Flask(__name__)
 # Configure a secret SECRET_KEY
-#app.config['SECRET_KEY'] = 'someRandomKey'
+app.config['SECRET_KEY'] = 'ed6526783adfa9542651afe3'
 # Loading the model and scaler
-predictor = load_model('diabetes_predictor')
+predictor = load_model('models\\diabetes_predictor')
 #flower_scaler = joblib.load(“iris_scaler.pkl”)
 # Now create a WTForm Class
 
@@ -69,20 +69,20 @@ def index():
         session['bmi'] = form.bmi.data 
         session['HbA1c_level'] = form.HbA1c_level.data 
         session['blood_glucose_level'] = form.blood_glucose_level.data 
-        return redirect(url_for('prediction'))
+        return redirect(url_for('prediction.html'))
     return render_template('index.html', form=form)
 @app.route('/prediction')
 def prediction():
-    content = {}
-    content['gender'] = session['gender']
-    content['age'] = float(session['age'])
-    content['hypertension'] = int(session['hypertension'])
-    content['heart_disease'] = int(session['heart_disease'])
-    content['smoking_history'] = session['smoking_history']
-    content['bmi'] = float(session['bmi'])
-    content['HbA1c_level'] = float(session['HbA1c_level'])
-    content['blood_glucose_level'] = int(session['blood_glucose_level'])
-    results = return_prediction(predictor,content)
+    user_input = {}
+    user_input['gender'] = session['gender']
+    user_input['age'] = float(session['age'])
+    user_input['hypertension'] = int(session['hypertension'])
+    user_input['heart_disease'] = int(session['heart_disease'])
+    user_input['smoking_history'] = session['smoking_history']
+    user_input['bmi'] = float(session['bmi'])
+    user_input['HbA1c_level'] = float(session['HbA1c_level'])
+    user_input['blood_glucose_level'] = int(session['blood_glucose_level'])
+    results = return_prediction(predictor,user_input)
     return render_template('prediction.html',results)
 
 if __name__ == '__main__':

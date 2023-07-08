@@ -1,0 +1,23 @@
+<h1>DIABETES PREDICTOR</h1>
+<h2>Enter the following details:</h2>
+<form method=”POST”>
+ <!-- {# This hidden_tag is a CSRF security feature. #} -->
+ {{ form.hidden_tag() }}
+ {{ form.gender.label }} {{form.gender}}
+ <br>
+ {{ form.age.label}} {{form.age}}
+ <br>
+ {{form.hypertension.label}}{{form.hypertension}}
+ <br>
+ {{form.heart_disease.label}}{{form.heart_disease}}
+ <br>
+ {{form.smoking_history.label}}{{form.smoking_history}}
+ <br>
+ {{form.bmi.label}}{{form.bmi}}
+ <br>
+ {{form.HbA1c_level.label}}{{form.HbA1c_level}}
+ <br>
+ {{form.blood_glucose_level.label}}{{form.blood_glucose_level}}
+ <br>
+ {{ form.submit() }}
+</form>
