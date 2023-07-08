@@ -1,7 +1,8 @@
 <h1>DIABETES PREDICTOR app</h1>
 <h2>Enter the following details:</h2>
-<form method=”POST”>
-<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+<form method="POST">
+<!-- <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> -->
+{{ form.hidden_tag() }}
 {{ form.gender.label }}:{{form.gender}}
  <br>
  {{ form.age.label}}:{{form.age}}

@@ -22,17 +22,19 @@ def return_prediction(model,user_input):
     le1.classes_=c1
     le2.classes_=c2
     
-    gender = le1.transform(user_input['gender'])
+    #gender = le1.transform(user_input['gender'])
+    gender=c1.index(user_input["gender"])
     age = user_input['age']
     hypertension = user_input['hypertension']
     heart_disease = user_input['heart_disease']
-    smoking_history = le2.transform(user_input['smoking_history'])
+    #smoking_history = le2.transform(user_input['smoking_history'])
+    smoking_history=c2.index(user_input["smoking_history"])
     bmi = user_input['bmi']
     HbA1c_level= user_input['HbA1c_level']
     blood_glucose_level= user_input['blood_glucose_level']
     input = [[gender,age,hypertension,heart_disease,smoking_history,bmi,HbA1c_level,blood_glucose_level]]
     #classes = np.array(['setosa', 'versicolor', 'virginica'])
-    output = model.predict_classes(input)
+    output = model.predict(input)
     if output>0.1:
         return "you have diabetes"
     else:
