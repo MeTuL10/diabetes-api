@@ -1,23 +1,26 @@
-<h1>DIABETES PREDICTOR app</h1>
-<h2>Enter the following details:</h2>
+<link rel="stylesheet" href='/static/style.css' />
+<div class="center">
+<h1>DIABETES PREDICTOR</h1>
+<!-- <h2>Enter the following details:</h2> -->
 <form method="POST">
 <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> -->
 {{ form.hidden_tag() }}
-{{ form.gender.label }}:{{form.gender}}
- <br>
- {{ form.age.label}}:{{form.age}}
- <br>
- {{form.hypertension.label}}:{{form.hypertension}}
- <br>s
- {{form.heart_disease.label}}:{{form.heart_disease}}
- <br>
- {{form.smoking_history.label}}:{{form.smoking_history}}
- <br>
- {{form.bmi.label}}:{{form.bmi}}
- <br>
- {{form.HbA1c_level.label}}:{{form.HbA1c_level}}
- <br>
- {{form.blood_glucose_level.label}}:{{form.blood_glucose_level}}
- <br>
- {{ form.submit() }}
+ <div class="inputbox">{{form.gender}}
+<span>Gender</span></div>
+ <div class="inputbox">{{form.age}}
+ <span>Age</span></div>
+ <div class="inputbox">{{form.hypertension}}
+ <span>Hypertension</span></div>
+ <div class="inputbox">{{form.heart_disease}}
+ <span>Heart disease</span></div>
+ <div class="inputbox">{{form.smoking_history}}
+ <span>Smoking history</span></div>
+ <div class="inputbox">{{form.bmi}}
+ <span>BMI</span></div>
+ <div class="inputbox">{{form.HbA1c_level}}
+ <span>HbA1c level</span></div>
+ <div class="inputbox">{{form.blood_glucose_level}}
+ <span>blood glucose level</span></div>
+ <div class="inputbox">{{ form.submit() }}</div>
 </form>
+</div>

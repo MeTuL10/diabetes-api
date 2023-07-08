@@ -1,7 +1,6 @@
 from flask import Flask, render_template, session, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField
-from wtforms.validators import NumberRange
+from wtforms import StringField,SubmitField,RadioField,SelectField
 import numpy as np 
 from keras.models import load_model
 from sklearn.preprocessing import LabelEncoder
@@ -21,13 +20,16 @@ def return_prediction(model,user_input):
     c2[-1]=c2[-1]
     le1.classes_=c1
     le2.classes_=c2
-    
-    #gender = le1.transform(user_input['gender'])
     gender=c1.index(user_input["gender"])
     age = user_input['age']
-    hypertension = user_input['hypertension']
-    heart_disease = user_input['heart_disease']
-    #smoking_history = le2.transform(user_input['smoking_history'])
+    if user_input['hypertension']=="yes":
+        hypertension=1
+    else:
+        hypertension=0
+    if user_input['heart_disease']=="yes":
+        heart_disease=1
+    else:
+        heart_disease=0
     smoking_history=c2.index(user_input["smoking_history"])
     bmi = user_input['bmi']
     HbA1c_level= user_input['HbA1c_level']
@@ -36,9 +38,9 @@ def return_prediction(model,user_input):
     #classes = np.array(['setosa', 'versicolor', 'virginica'])
     output = model.predict(input)
     if output>0.1:
-        return "you have diabetes"
+        return "Positive"
     else:
-        return "you dont have diabetes"
+        return "Negative"
 
 app = Flask(__name__)
 # Configure a secret SECRET_KEY
@@ -52,11 +54,11 @@ predictor = load_model('models\\diabetes_predictor')
 #gender age	hypertension heart_disease smoking_history bmi HbA1c_level blood_glucose_level diabetes
 
 class DiabetesForm(FlaskForm):
-    gender= StringField('gender')
+    gender= SelectField("gender",choices=["Female","Male","Others"])
     age = StringField('age')
-    hypertension = StringField('hypertension')
-    heart_disease = StringField('heart_disease')
-    smoking_history = StringField('smoking_history')
+    hypertension = SelectField('hypertension',choices=["no","yes"])
+    heart_disease = SelectField('heart_disease',choices=["no","yes"])
+    smoking_history = SelectField('smoking_history',choices=["No Info","current","ever","former","never","not current"])
     bmi = StringField('bmi')
     HbA1c_level = StringField('HbA1c_level')
     blood_glucose_level = StringField('blood_glucose_level')
@@ -89,8 +91,8 @@ def prediction():
     user_input = {}
     user_input['gender'] = str(session['gender'])
     user_input['age'] = float(session['age'])
-    user_input['hypertension'] = int(session['hypertension'])
-    user_input['heart_disease'] = int(session['heart_disease'])
+    user_input['hypertension'] = str(session['hypertension'])
+    user_input['heart_disease'] = str(session['heart_disease'])
     user_input['smoking_history'] = str(session['smoking_history'])
     user_input['bmi'] = float(session['bmi'])
     user_input['HbA1c_level'] = float(session['HbA1c_level'])
