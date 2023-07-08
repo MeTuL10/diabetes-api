@@ -1,22 +1,21 @@
 <h1>DIABETES PREDICTOR app</h1>
 <h2>Enter the following details:</h2>
-<form method=”POST”>
-<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-{{ form.gender.label }}:{{form.gender}}
- <br>
- {{ form.age.label}}:{{form.age}}
- <br>
- {{form.hypertension.label}}:{{form.hypertension}}
- <br>s
- {{form.heart_disease.label}}:{{form.heart_disease}}
- <br>
- {{form.smoking_history.label}}:{{form.smoking_history}}
- <br>
- {{form.bmi.label}}:{{form.bmi}}
- <br>
- {{form.HbA1c_level.label}}:{{form.HbA1c_level}}
- <br>
- {{form.blood_glucose_level.label}}:{{form.blood_glucose_level}}
- <br>
- {{ form.submit() }}
+<form action="{{ url_for('index')}}" method="POST">
+ <label for="gender">gender:</label>
+ <input type="text" id="gender" name="gender" placeholder="gender">
+ <label for="age">age:</label>
+ <input type="text" id="age" name="age" placeholder="age">
+ <label for="hypertension">age:</label>
+ <input type="text" id="hypertension" name="hypertension" placeholder="hypertension">
+ <label for="heart_disease">age:</label>
+ <input type="text" id="heart_disease" name="heart_disease" placeholder="heart_disease">
+ <label for="smoking_history">age:</label>
+ <input type="text" id="smoking_history" name="smoking_history" placeholder="smoking_history">
+ <label for="bmi">age:</label>
+ <input type="text" id="bmi" name="bmi" placeholder="bmi">
+ <label for="HbA1c_level">age:</label>
+ <input type="text" id="HbA1c_level" name="HbA1c_level" placeholder="HbA1c_level">
+ <label for="blood_glucose_level">age:</label>
+ <input type="text" id="blood_glucose_level" name="blood_glucose_level" placeholder="blood_glucose_level">
+ <button type="submit">Predict</button>
 </form>
