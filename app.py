@@ -38,9 +38,9 @@ def return_prediction(model,user_input):
     #classes = np.array(['setosa', 'versicolor', 'virginica'])
     output = model.predict(input)
     if output>0.1:
-        return "Positive"
+        return "POSITIVE"
     else:
-        return "Negative"
+        return "NEGATIVE"
 
 app = Flask(__name__)
 # Configure a secret SECRET_KEY

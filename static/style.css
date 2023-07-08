@@ -35,11 +35,12 @@ body {
   width: 300px;
   height: 30px;
   margin-bottom: 2rem;
+  
 }
 .center .inputbox input {
   position:absolute; 
   top: 0;
-  left: 0;
+  left: 7rem;
   width: 80%;
   border: 2px solid #000;
   outline: none;
@@ -51,7 +52,7 @@ body {
 .center .inputbox select {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 7rem;
     width: 80%;
     border: 2px solid #000;
     outline: none;
@@ -64,17 +65,19 @@ body {
 .center .inputbox span {
   position: absolute;
   top: -1.3rem;
-  left: 0.5rem;
+  left: 7.5rem;
   font-size: 1em;
   font-family: sans-serif;
 }
 
-.center .inputbox button {
-  width: 50%;
-  background: dodgerblue;
-  color: #fff;
-  border: #fff;
-}
-.center .inputbox:hover [type="button"] {
-  background: linear-gradient(45deg, greenyellow, dodgerblue);
-}
+.center .inputbox .button {
+    width: 7rem;
+    left:11rem;
+    background: rgb(130, 13, 232);
+    color: #fff;
+    border: #fff;
+    transition: 0.5s;
+  }
+  .center .inputbox:hover .button {
+    background: rgb(235, 6, 6);
+  }
