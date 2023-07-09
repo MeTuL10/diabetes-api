@@ -54,7 +54,7 @@ predictor = load_model('models/diabetes_predictor')
 #gender age	hypertension heart_disease smoking_history bmi HbA1c_level blood_glucose_level diabetes
 
 class DiabetesForm(FlaskForm):
-    gender= SelectField("gender",choices=["Female","Male","Others"])
+    gender= SelectField("gender",choices=["Female","Male","Other"])
     age = StringField('age')
     hypertension = SelectField('hypertension',choices=["no","yes"])
     heart_disease = SelectField('heart_disease',choices=["no","yes"])
@@ -63,7 +63,6 @@ class DiabetesForm(FlaskForm):
     HbA1c_level = StringField('HbA1c_level')
     blood_glucose_level = StringField('blood_glucose_level')
     submit = SubmitField('Analyze')
- 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = DiabetesForm()
