@@ -40,7 +40,7 @@ body {
 .center .inputbox input {
   position:absolute; 
   top: 0;
-  left: 7rem;
+  left: 7vw;
   width: 80%;
   border: 2px solid #000;
   outline: none;
@@ -52,7 +52,7 @@ body {
 .center .inputbox select {
     position: absolute;
     top: 0;
-    left: 7rem;
+    left: 7vw;
     width: 80%;
     border: 2px solid #000;
     outline: none;
@@ -65,14 +65,14 @@ body {
 .center .inputbox span {
   position: absolute;
   top: -1.3rem;
-  left: 7.5rem;
+  left: 7.5vw;
   font-size: 1em;
   font-family: sans-serif;
 }
 
 .center .inputbox .button {
     width: 7rem;
-    left:11rem;
+    left:11vw;
     background: rgb(130, 13, 232);
     color: #fff;
     border: #fff;

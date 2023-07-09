@@ -47,7 +47,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '6c6722beeac20a0d45f7e977'
 CSRFProtect(app)
 # Loading the model and scaler
-predictor = load_model('models\\diabetes_predictor')
+predictor = load_model('models/diabetes_predictor')
 #flower_scaler = joblib.load(“iris_scaler.pkl”)
 # Now create a WTForm Class
 
@@ -101,4 +101,4 @@ def prediction():
     return render_template('prediction.html',results=results)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8000)
